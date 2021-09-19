@@ -16,6 +16,7 @@ export const login = (credential) => {
     });
 };
 
+// fetch menu api
 export const getMenus = (restId) => {
     return fetch(`/restaurant/${restId}/menu`).then((response) => {
         if (response.status < 200 || response.status >= 300
@@ -27,6 +28,7 @@ export const getMenus = (restId) => {
     });
 };
 
+// fetch restaurant api
 export const getRestaurants = () => {
     return fetch("/restaurants").then((response) => {
         if (response.status < 200 || response.status >= 300
@@ -37,7 +39,7 @@ export const getRestaurants = () => {
         return response.json();
     });
 };
-
+// fetch cart api
 export const getCart = () => {
     return fetch("/cart").then((response) => {
         if (response.status < 200 || response.status >= 300
@@ -49,6 +51,7 @@ export const getCart = () => {
     });
 };
 
+// checkout api
 export const checkout = () => {
     return fetch("/checkout").then((response) => {
         if (response.status < 200 || response.status >= 300
@@ -58,6 +61,7 @@ export const checkout = () => {
     });
 };
 
+// add item to cart api
 export const addItemToCart = (itemId) => {
     return fetch(`/order/${itemId}`, {
         method: "POST",

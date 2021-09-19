@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Layout, Typography} from "antd";
 import LoginForm from "./components/LoginForm";
 import FoodList from "./components/FoodList";
-import './App.css';
+import MyCart from "./components/MyCart";
 
 const {Header, Content} = Layout;
 const {Title} = Typography;
@@ -12,11 +12,16 @@ function App() {
     return (
         <Layout style={{height: '100vh'}}>
             <Header>
-                <div className="header">
+                <div className="header" style={{display: "flex", justifyContent: "space-between"}}>
                     <Title level={2}
                            style={{color: 'white', lineHeight: "inherit", marginBottom: 0}}>
                         Sebastian's Yummy Land~!
                     </Title>
+                    {authed && (
+                        <div>
+                            <MyCart />
+                        </div>
+                    )}
                 </div>
             </Header>
             <Content style={{
@@ -28,7 +33,7 @@ function App() {
                 {   // 已登陆？
                     authed
                         ?
-                        (<div>content placeholder</div>)
+                        (<FoodList/>)
                         :
                         <LoginForm onSuccess={() => setAuthed(true)}/>
                 }
